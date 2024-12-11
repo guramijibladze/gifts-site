@@ -1,12 +1,16 @@
 
-<header class="header" data-header [class.scrolled]="isScrolled">
+<header class="header" data-header
+        
+       [class.scrolled]="isScrolled">
     <div class="container">
 
       <div class="overlay" data-overlay></div>
 
-      <a href="#" style="display: flex; align-items: center;">
-        <img src="../../../assets/image/MAINLOGO.png" alt="" style="width: 70px; height: 70px; border-radius: 50%;">
-        <h1 class="logo" style="margin-left: 10px; margin-top: -10px;">გააჩუქე</h1>
+      <a style="display: flex; align-items: center;">
+          <img src="../../../assets/image/MAINLOGO.png"
+              (click)="scrollToGStartPage('startPage')"  
+              alt="" style="width: 70px; height: 70px; border-radius: 50%; cursor: pointer;">
+        <h1 class="logo" style="margin-left: 10px; margin-top: -10px; cursor: context-menu;">გააჩუქე</h1>
       </a>
 
       <nav class="navbar" data-nav-open-btn>
@@ -26,15 +30,19 @@
           </li> -->
 
           <li class="navbar-item">
-            <a href="#about" class="navbar-link" data-navbar-link>ჩვენს შესახებ</a>
+            <a (click)="scrollToAbout('about', -50)" 
+               class="navbar-link" data-navbar-link>ჩვენს შესახებ</a>
           </li>
 
           <li class="navbar-item">
-            <a href="#services" class="navbar-link" data-navbar-link>გაჩუქებული ნივთები</a>
+            <a (click)="scrollToGifItems('blog', -50)"
+                class="navbar-link" 
+               data-navbar-link>გაჩუქებული ნივთები</a>
           </li>
 
           <li class="navbar-item">
-            <a href="#features" class="navbar-link" data-navbar-link>კონტაქტი</a>
+            <a (click)="scrollToFooter('footer')"
+                class="navbar-link" data-navbar-link>კონტაქტი</a>
           </li>
 
 

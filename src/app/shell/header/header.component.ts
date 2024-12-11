@@ -17,5 +17,46 @@ export class HeaderComponent {
     this.isScrolled = scrollPercentage > 10;
   }
 
+  scrollToGifItems(id:string, scrollPostion:number){
+    const element = document.getElementById(id);
+    if (element) {
+      const elementPosition = element.offsetTop; // ელემენტის ზედა პოზიცია
+      const offsetPosition = elementPosition + scrollPostion;
+
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: 'smooth' // გლუვი სქროლვა
+      });
+    }
+  }
+
+  scrollToAbout(id:string, scrollPostion:number){
+    const element = document.getElementById(id);
+    if (element) {
+      const elementPosition = element.offsetTop; // ელემენტის ზედა პოზიცია
+      const offsetPosition = elementPosition + scrollPostion;
+
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: 'smooth' // გლუვი სქროლვა
+      });
+    }
+  }
+
+  scrollToFooter(id:string){
+    const element = document.getElementById(id);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  }
+
+  scrollToGStartPage(id:string):void{
+    const element = document.getElementById(id);
+    console.log(element)
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  }
+
   constructor(){}
 }

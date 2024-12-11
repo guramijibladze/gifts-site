@@ -4,16 +4,14 @@ header.scrolled {
     position: fixed;
   }
 
-//   nav ul li a {
-//     text-decoration: none;
-//     color: white;
-//     transition: color 0.3s ease;
-//   }
-
   header.scrolled nav ul li a {
     color: hsl(231, 68%, 21%); /* ფერის ცვლილება */
   }
 
   header.scrolled .logo{
     color: hsl(231, 68%, 21%); /* ფერის ცვლილება */
+  }
+
+  .navbar-item{
+    cursor: pointer;
   }
