@@ -1,0 +1,13 @@
+.click-animation{
+    width: 55px;
+    height: 55px;
+    position: absolute;
+    margin-left: 180px;
+    margin-top: 10px;
+    cursor: pointer;
+    transition: transform .2s;
+}
+
+.btn:hover,.click-animation:hover {
+    transform: scale(1.1); 
+  }
