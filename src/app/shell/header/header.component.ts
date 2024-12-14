@@ -38,7 +38,7 @@ export class HeaderComponent {
 
       window.scrollTo({
         top: offsetPosition,
-        behavior: 'smooth' // გლუვი სქროლვა
+        behavior: 'smooth' 
       });
     }
   }

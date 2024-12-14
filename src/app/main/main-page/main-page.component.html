@@ -18,7 +18,8 @@
           
 
           <div class="button" style="display: flex;">
-            <button class="btn" style="display: flex;">
+            <button class="btn" style="display: flex;"
+                    (click)="scrollToGift('currentGifts', -60)">
               <p style="font-weight: bold;">მიმდინარე საჩუქრები</p> 
             </button>
             <img src="../../../assets/GIF image/output-onlinegiftools.gif" 
@@ -99,7 +100,7 @@
       - #SERVICE
     -->
 
-    <section class="section service" id="services">
+    <section class="section service" id="services" id="currentGifts">
       <div class="container">
 
         <h2 class="h2 section-title underline">მიმდინარე საჩუქრები</h2>

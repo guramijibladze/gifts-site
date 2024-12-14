@@ -42,4 +42,17 @@ export class MainPageComponent {
       }
     })
   }
+
+  public scrollToGift(id:string, scrollPostion:number){
+    const element = document.getElementById(id);
+    if (element) {
+      const elementPosition = element.offsetTop; 
+      const offsetPosition = elementPosition + scrollPostion;
+
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: 'smooth' 
+      });
+    }
+  }
 }
