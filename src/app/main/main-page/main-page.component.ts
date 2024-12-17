@@ -8,11 +8,12 @@ import { IMAGE_PATHS } from '../../shared/utils';
   styleUrl: './main-page.component.scss'
 })
 export class MainPageComponent {
+  public isModalOpen = false;
 
   private image = IMAGE_PATHS
   
   //გაჩუქებული საჩუქრები
-  PresentedgiftsArr:any = [
+  public PresentedgiftsArr:any = [
     {
       imagePath: `${this.image}/1.png`
     },
@@ -35,12 +36,20 @@ export class MainPageComponent {
     this.getPresentedgifts()
   }
 
-  getPresentedgifts(){
+  public getPresentedgifts(){
     this.presendetgiftsService.getcomputerRooms().subscribe({
       next: (res) => {
         this.PresentedgiftsArr = res
       }
     })
+  }
+
+  public registrationModal(): void {
+    this.isModalOpen = true;
+  }
+
+  public closeModal(): void {
+    this.isModalOpen = false;
   }
 
   public scrollToGift(id:string, scrollPostion:number){
@@ -55,4 +64,5 @@ export class MainPageComponent {
       });
     }
   }
+
 }

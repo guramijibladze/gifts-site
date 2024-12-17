@@ -108,10 +108,10 @@
         <ul class="service-list" style="display: flex; justify-content: center;">
 
           <li>
-            <div class="service-card" style="width: 550px;">
+            <div class="service-card" style="width: 450px; height: 500px;">
 
               <div class="card-icon" >
-                <img src="../../../assets/image/4.png" style="width: 370px; height: 370px;" alt="">
+                <img src="../../../assets/image/4.png" style="width: 370px;" alt="">
               </div>
 
               <h3 class="h3 title">ქოლგა</h3>
@@ -120,8 +120,30 @@
                 გამჩუქებელი: გააჩუქეს გვერდი
               </p>
 
-              <button class="card-btn" aria-label="Show More">
-                <!-- <ion-icon name="chevron-forward-outline"></ion-icon> -->
+              <button class="card-btn"
+                      (click)="registrationModal()" >
+                <h3>დარეგისტრირდი</h3>
+              </button>
+
+            </div>
+          </li>
+
+          <li>
+            <div class="service-card" style="width: 450px; height: 500px;">
+
+              <div class="card-icon" >
+                <img src="../../../assets/image/4.png" style="width: 370px;" alt="">
+              </div>
+
+              <h3 class="h3 title">ქოლგა</h3>
+
+              <p class="text">
+                გამჩუქებელი: გააჩუქეს გვერდი
+              </p>
+
+              <button class="card-btn"
+                      (click)="registrationModal()" >
+                <h3>დარეგისტრირდი</h3>
               </button>
 
             </div>
@@ -202,3 +224,9 @@
 
   </article>
 </main>
+
+
+<!-- მოდალის კონტეინერი -->
+ @if(isModalOpen){
+  <app-registrationforgift (modalClose)="closeModal()"></app-registrationforgift>
+}

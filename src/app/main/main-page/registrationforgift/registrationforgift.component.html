@@ -1,0 +1,23 @@
+<div class="modal">
+  <div class="modal-content">
+    
+    <p style="float: right; cursor: pointer; width: 20px; padding: 10px 25px;"
+      class="btn btn-lg btn-primary btn-block" 
+      (click)="closeModal()">X</p>
+
+    <div class="wrapper">
+      <form class="form-signin">       
+        <h2 class="form-signin-heading"></h2>
+        <input type="text" class="form-control" name="username" placeholder="სახელი" required="" autofocus="" />
+        <input type="text" class="form-control" name="password" placeholder="გვარი" required=""/>  
+        <input type="text" class="form-control" name="password" placeholder="ტელეფონის ნომერი" required=""/>  
+
+        <button class="btn btn-lg btn-primary btn-block" 
+                style="float: right; margin-top: 10px; margin-bottom: 20px;"
+                type="submit">დარეგისტრირდი</button>   
+      </form>
+    </div>
+
+    <!-- <button class="card-btn" (click)="closeModal()">დახურვა</button> -->
+  </div>
+</div>

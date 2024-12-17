@@ -1,3 +1,4 @@
+
 .click-animation{
     width: 55px;
     height: 55px;
@@ -15,3 +16,23 @@
 .btn:hover{
     transform: scale(1.1); 
 }
+
+
+  .card-btn {
+    margin-inline: auto;
+    padding: 15px;
+    border: 1px solid var(--winter-sky);
+    border-radius: 5%;
+    color: var(--winter-sky);
+    transition: var(--transition-1);
+  }
+  
+   .card-btn:is(:hover, :focus) {
+    color: var(--white);
+    background-color: var(--winter-sky);
+  }
+  
+
+.open-modal-button:hover {
+    background-color: #0056b3;
+  }

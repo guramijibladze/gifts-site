@@ -5,6 +5,10 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ShellModule } from './shell/shell.module';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MainModule } from './main/main.module';
+
 
 @NgModule({
   declarations: [
@@ -15,10 +19,14 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
     BrowserModule,
     AppRoutingModule,
     ShellModule,
-    HttpClientModule
+    HttpClientModule,
+    BrowserAnimationsModule,
+    MainModule
   ],
   providers: [
-    HttpClient
+    HttpClient,
+    // provideAnimationsAsync('noop'),
+    provideAnimationsAsync()
   ],
   bootstrap: [AppComponent]
 })
