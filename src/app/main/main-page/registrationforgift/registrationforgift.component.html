@@ -6,14 +6,41 @@
       (click)="closeModal()">X</p>
 
     <div class="wrapper">
-      <form class="form-signin">       
+      <form class="form-signin" (ngSubmit)="registation()" #userForm="ngForm">       
         <h2 class="form-signin-heading"></h2>
-        <input type="text" class="form-control" name="username" placeholder="სახელი" required="" autofocus="" />
-        <input type="text" class="form-control" name="password" placeholder="გვარი" required=""/>  
-        <input type="text" class="form-control" name="password" placeholder="ტელეფონის ნომერი" required=""/>  
+        
+        <input type="text" 
+              class="form-control" 
+              name="username" 
+              [(ngModel)] = "user.name"
+              placeholder="სახელი" required="" autofocus="" pattern="^[a-zA-Z]+$"/>
+
+        <input type="text" 
+              class="form-control" 
+              name="lastName" 
+              [(ngModel)] = "user.lastName"
+              placeholder="გვარი" required=""/>  
+
+        <input type="text" 
+                class="form-control"
+                id="username"
+                name="phoneNumber" 
+                [(ngModel)] = "user.phoneNumber"
+                #phoneNumber="ngModel"
+                placeholder="ტელეფონის ნომერი" 
+                minlength="2"
+                required/>  
+
+          <!-- Error Message -->
+          <div *ngIf="phoneNumber.errors && phoneNumber.touched">This field is required</div>
+
+          <!-- <div *ngIf="phoneNumber.invalid && phoneNumber.touched && phoneNumber.pristine" class="text-danger">
+            გთხოვთ, შეიყვანოთ ტელეფონის ნომერი.
+          </div> -->
 
         <button class="btn btn-lg btn-primary btn-block" 
                 style="float: right; margin-top: 10px; margin-bottom: 20px;"
+                [disabled]="userForm.invalid"
                 type="submit">დარეგისტრირდი</button>   
       </form>
     </div>

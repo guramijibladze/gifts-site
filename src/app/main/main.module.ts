@@ -6,6 +6,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { PresendetgiftsService } from './service/presendetgifts.service';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { RegistrationforgiftComponent } from './main-page/registrationforgift/registrationforgift.component';
+import { FormsModule } from '@angular/forms';
 
 const routes: Routes = [
   { path: '', component: MainPageComponent}
@@ -19,6 +20,7 @@ const routes: Routes = [
   imports: [
     CommonModule,
     ShellModule,
+    FormsModule,
     RouterModule.forChild(routes)
   ],
   providers:[
