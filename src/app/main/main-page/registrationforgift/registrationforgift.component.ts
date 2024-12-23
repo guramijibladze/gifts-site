@@ -15,11 +15,15 @@ export class RegistrationforgiftComponent {
     phoneNumber: ''
   }
 
-  closeModal(){
+  public closeModal(){
     this.modalClose.emit()  
   }
 
   public registation(){
+    if(this.user.phoneNumber.length != 9){
+      console.log('გთხოვთ შეიყვანეთ სწორი ტელეფონის ნომერი!!!')
+      return
+    }
     console.log(this.user)
   }
 }

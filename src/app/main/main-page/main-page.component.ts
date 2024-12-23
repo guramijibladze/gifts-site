@@ -13,18 +13,23 @@ export class MainPageComponent {
   private image = IMAGE_PATHS
   
   //გაჩუქებული საჩუქრები
-  public PresentedgiftsArr:any = [
+  public PresentedgiftsArr:any = []
+
+  public currentGifts:any = [
     {
-      imagePath: `${this.image}/1.png`
+      id:1,
+      imageBase64: `${this.image}/4.png`,
+      giftName: 'თოვლის ბაბუ',
+      description:'40 სანტიმეტრიანი თოვლის ბაბუ საახალწლო განწყობისტვის',
+      giver: 'გააჩუქეს გვერდი',
+      startDate: '2024-12-20'
     },
     {
-      imagePath: `${this.image}/2.png`
-    },
-    {
-      imagePath: `${this.image}/3.png`
-    },
-    {
-      imagePath: `${this.image}/4.png`
+      id:2,
+      imageBase64: `${this.image}/2.png`,
+      giftName: 'ქოლგა',
+      description:'ქოლგა, წვიმიანი ამინდებისთვის',
+      giver: 'გააჩუქეს გვერდი',
     }
   ]
 
@@ -37,7 +42,13 @@ export class MainPageComponent {
   }
 
   public getPresentedgifts(){
-    this.presendetgiftsService.getcomputerRooms().subscribe({
+
+    let sendObject = {
+      Raodenoba: 1,
+      isActive: true
+    }
+    
+    this.presendetgiftsService.getGiftedItems(sendObject).subscribe({
       next: (res) => {
         this.PresentedgiftsArr = res
       }

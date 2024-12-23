@@ -108,47 +108,32 @@
 
         <ul class="service-list" style="display: flex; justify-content: center;">
 
-          <li>
-            <div class="service-card" style="width: 450px; height: 500px;">
+          @for(gift of currentGifts; track gift){
+            <li>
+              <div class="service-card" style="width: 450px; height: 500px;">
+  
+                <div class="card-icon" >
+                  <img [src]="gift.imageBase64" style="width: 370px;" alt="">
+                </div>
+  
+                <h3 class="h3 title">{{ gift.giftName }}</h3>
 
-              <div class="card-icon" >
-                <img src="../../../assets/image/4.png" style="width: 370px;" alt="">
+                <p class="text">
+                  გამჩუქებელი: {{ gift.description }}
+                </p>
+  
+                <p class="text">
+                  გამჩუქებელი: {{ gift.giver }}
+                </p>
+  
+                <button class="card-btn"
+                        (click)="registrationModal()" >
+                  <h3>დარეგისტრირდი</h3>
+                </button>
+  
               </div>
-
-              <h3 class="h3 title">ქოლგა</h3>
-
-              <p class="text">
-                გამჩუქებელი: გააჩუქეს გვერდი
-              </p>
-
-              <button class="card-btn"
-                      (click)="registrationModal()" >
-                <h3>დარეგისტრირდი</h3>
-              </button>
-
-            </div>
-          </li>
-
-          <li>
-            <div class="service-card" style="width: 450px; height: 500px;">
-
-              <div class="card-icon" >
-                <img src="../../../assets/image/4.png" style="width: 370px;" alt="">
-              </div>
-
-              <h3 class="h3 title">ქოლგა</h3>
-
-              <p class="text">
-                გამჩუქებელი: გააჩუქეს გვერდი
-              </p>
-
-              <button class="card-btn"
-                      (click)="registrationModal()" >
-                <h3>დარეგისტრირდი</h3>
-              </button>
-
-            </div>
-          </li>
+            </li>
+          }
 
         </ul>
 
@@ -173,7 +158,7 @@
   
                 <figure class="banner">
                   <a href="#">
-                    <img [src]="gift.imagePath" width="750" height="350" loading="lazy"
+                    <img [src]="'data:image/jpeg;base64,' + gift.imageBase64" width="750" height="350" loading="lazy"
                       alt="Vestibulum massa arcu, consectetu pellentesque scelerisque." 
                       class="img-cover">
                   </a>
@@ -199,15 +184,15 @@
                       <time datetime="2022-03-07"> გამოქვეყნება:{{ gift.startDate | date}}</time>
                     </div>
   
-                    <button class="comment" aria-label="Comment">
+                    <div class="publish-date">
                       <!-- <ion-icon name="chatbubble-outline"></ion-icon> -->
   
-                      <time datetime="2022-03-07"> გაჩუქება:{{ gift.endDate }}</time>
-                    </button>
+                      <time datetime="2022-03-07"> გაჩუქება:{{ gift.endDate | date }}</time>
+                    </div>
   
-                    <button class="share" aria-label="Share">
-                      <!-- <ion-icon name="share-social-outline"></ion-icon> -->
-                    </button>
+                   <div>
+                    {{ gift.winnerFirstName }}{{ gift.winnerLastName }}
+                   </div>
   
                   </div>
   
