@@ -113,21 +113,17 @@
               <div class="service-card" style="width: 450px; height: 500px;">
   
                 <div class="card-icon" >
-                  <img [src]="gift.imageBase64" style="width: 370px;" alt="">
+                  <img [src]="'data:image/jpeg;base64,' + gift.imageBase64" style="width: 370px;" alt="">
                 </div>
   
-                <h3 class="h3 title">{{ gift.giftName }}</h3>
-
-                <p class="text">
-                  გამჩუქებელი: {{ gift.description }}
-                </p>
+                <!-- <h3 class="h3 title">{{ gift.giftName }}</h3> -->
   
                 <p class="text">
-                  გამჩუქებელი: {{ gift.giver }}
+                  გამჩუქებელი: {{ gift.donor }}
                 </p>
   
                 <button class="card-btn"
-                        (click)="registrationModal()" >
+                        (click)="registrationModal(gift.id)" >
                   <h3>დარეგისტრირდი</h3>
                 </button>
   
@@ -214,5 +210,5 @@
 
 <!-- მოდალის კონტეინერი -->
  @if(isModalOpen){
-  <app-registrationforgift (modalClose)="closeModal()"></app-registrationforgift>
+  <app-registrationforgift [Id]="giftId" (modalClose)="closeModal()"></app-registrationforgift>
 }

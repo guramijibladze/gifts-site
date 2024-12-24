@@ -1,5 +1,6 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { User } from '../../model';
+import { PresendetgiftsService } from '../../service/presendetgifts.service';
 
 @Component({
   selector: 'app-registrationforgift',
@@ -8,10 +9,18 @@ import { User } from '../../model';
 })
 export class RegistrationforgiftComponent {
   @Output() modalClose = new EventEmitter<boolean>();
+  @Input() Id!:number;
+
+  constructor(
+    private presendetgiftsService: PresendetgiftsService,
+  ){}
+
+  ngOnInit() { }
 
   user:User = {
-    name: '',
-    lastName: '',
+    giftItemId: 0,
+    firstname: '',
+    lastname: '',
     phoneNumber: ''
   }
 
@@ -24,6 +33,14 @@ export class RegistrationforgiftComponent {
       console.log('გთხოვთ შეიყვანეთ სწორი ტელეფონის ნომერი!!!')
       return
     }
+    this.user.giftItemId = this.Id
     console.log(this.user)
+
+    this.presendetgiftsService.giftRegistration(this.user).subscribe({
+      next: (res:any) => {
+        console.log(res)
+      }
+    })
   }
+
 }

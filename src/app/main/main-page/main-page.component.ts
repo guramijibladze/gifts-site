@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { PresendetgiftsService } from '../service/presendetgifts.service';
 import { IMAGE_PATHS } from '../../shared/utils';
+import { GiftedItemModel } from '../model';
 
 @Component({
   selector: 'app-main-page',
@@ -9,54 +10,29 @@ import { IMAGE_PATHS } from '../../shared/utils';
 })
 export class MainPageComponent {
   public isModalOpen = false;
+  public giftId:number = 0
 
   private image = IMAGE_PATHS
   
   //გაჩუქებული საჩუქრები
-  public PresentedgiftsArr:any = []
+  public PresentedgiftsArr:GiftedItemModel[] = []
 
-  public currentGifts:any = [
-    {
-      id:1,
-      imageBase64: `${this.image}/4.png`,
-      giftName: 'თოვლის ბაბუ',
-      description:'40 სანტიმეტრიანი თოვლის ბაბუ საახალწლო განწყობისტვის',
-      giver: 'გააჩუქეს გვერდი',
-      startDate: '2024-12-20'
-    },
-    {
-      id:2,
-      imageBase64: `${this.image}/2.png`,
-      giftName: 'ქოლგა',
-      description:'ქოლგა, წვიმიანი ამინდებისთვის',
-      giver: 'გააჩუქეს გვერდი',
-    }
-  ]
+  //გასაჩუქებელი საჩუქრები
+  public currentGifts:GiftedItemModel[] = []
 
   constructor(
     private presendetgiftsService: PresendetgiftsService,
   ) {}
 
   ngOnInit() {
-    this.getPresentedgifts()
+    this.getPresentedgifts();
+    this.getCurrentGifts();
   }
 
-  public getPresentedgifts(){
 
-    let sendObject = {
-      Raodenoba: 1,
-      isActive: true
-    }
-    
-    this.presendetgiftsService.getGiftedItems(sendObject).subscribe({
-      next: (res) => {
-        this.PresentedgiftsArr = res
-      }
-    })
-  }
-
-  public registrationModal(): void {
+  public registrationModal(Id:number): void {
     this.isModalOpen = true;
+    this.giftId = Id
   }
 
   public closeModal(): void {
@@ -74,6 +50,33 @@ export class MainPageComponent {
         behavior: 'smooth' 
       });
     }
+  }
+
+  private getCurrentGifts():void{
+    let sendObject = {
+      Raodenoba: 1,
+      isActive: true
+    }
+
+    this.presendetgiftsService.getGiftedItems(sendObject).subscribe({
+      next: (res:GiftedItemModel[]) => {
+        this.currentGifts = res
+      }
+    })
+  }
+
+  private getPresentedgifts():void{
+
+    let sendObject = {
+      Raodenoba: 1,
+      isActive: false
+    }
+    
+    this.presendetgiftsService.getGiftedItems(sendObject).subscribe({
+      next: (res:GiftedItemModel[]) => {
+        this.PresentedgiftsArr = res
+      }
+    })
   }
 
 }

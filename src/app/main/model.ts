@@ -1,6 +1,7 @@
 export interface User {
-    name:string,
-    lastName:string,
+    giftItemId:number,
+    firstname:string,
+    lastname:string,
     phoneNumber:string
 }
 

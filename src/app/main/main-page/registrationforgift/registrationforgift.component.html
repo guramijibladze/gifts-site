@@ -12,13 +12,13 @@
         <input type="text" 
               class="form-control" 
               name="username" 
-              [(ngModel)] = "user.name"
+              [(ngModel)] = "user.firstname"
               placeholder="სახელი" required="" autofocus="" pattern="^[a-zA-Z]+$"/>
 
         <input type="text" 
               class="form-control" 
               name="lastName" 
-              [(ngModel)] = "user.lastName"
+              [(ngModel)] = "user.lastname"
               placeholder="გვარი" required=""/>  
 
         <input type="text" 
@@ -30,6 +30,7 @@
                 placeholder="ტელეფონის ნომერი" 
                 minlength="2"
                 required/>  
+               
 
           <!-- Error Message -->
           <!-- <div *ngIf="phoneNumber.errors && phoneNumber.touched">This field is required</div> -->
@@ -37,7 +38,7 @@
           <div *ngIf="phoneNumber.invalid && phoneNumber.touched && phoneNumber.pristine" class="text-danger">
             გთხოვთ, შეიყვანოთ ტელეფონის ნომერი.
           </div>
-
+  
         <button class="btn btn-lg btn-primary btn-block" 
                 style="float: right; margin-top: 10px; margin-bottom: 20px;"
        
