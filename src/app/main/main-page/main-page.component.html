@@ -110,22 +110,41 @@
 
           @for(gift of currentGifts; track gift){
             <li>
-              <div class="service-card" style="width: 450px; height: 500px;">
+              <div class="service-card" style="width: 450px; height: 550px;">
   
                 <div class="card-icon" >
                   <img [src]="'data:image/jpeg;base64,' + gift.imageBase64" style="width: 370px;" alt="">
                 </div>
   
-                <!-- <h3 class="h3 title">{{ gift.giftName }}</h3> -->
-  
-                <p class="text">
-                  გამჩუქებელი: {{ gift.donor }}
+                <h3 class="h3 title">{{ gift.giftName }}</h3>
+
+                <p class="text" style=" margin-block-end: 0px;">
+                  {{ gift.giftDescription }}
                 </p>
+  
+                <div class="decription" style="display: flex; justify-content: center; align-items: center;">
+                  <span  style="font-weight: bold;">გამჩუქებელი: </span>
+
+                  <span class="text" style="margin-left: 5px; margin-block-end: 0px;">
+                     {{ gift.donor }}
+                  </span>
+
+                  <img [src]="'data:image/jpeg;base64,' + gift.donorLogoBase64" style="width: 50px; height: 50px;" alt="">
+
+                </div>
+         
   
                 <button class="card-btn"
                         (click)="registrationModal(gift.id)" >
                   <h3>დარეგისტრირდი</h3>
                 </button>
+
+                <div class="participants" style="margin-top: 10px;">
+                  <span style="font-size: 12px; display: flex; color: #EF1F76;;">მონაწილეობას იღებს: 
+                    <b style="margin-top:  2px; font-size: 15px; margin-left: 3px; color: #05b605">{{gift.participantCount}}</b> 
+                    <span style="margin-left: 2px;">ადამიანი</span> 
+                  </span>
+                </div>
   
               </div>
             </li>
@@ -210,5 +229,5 @@
 
 <!-- მოდალის კონტეინერი -->
  @if(isModalOpen){
-  <app-registrationforgift [Id]="giftId" (modalClose)="closeModal()"></app-registrationforgift>
+  <app-registrationforgift [Id]="giftId" (modalClose)="closeModal($event)"></app-registrationforgift>
 }

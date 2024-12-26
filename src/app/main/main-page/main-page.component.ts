@@ -10,9 +10,9 @@ import { GiftedItemModel } from '../model';
 })
 export class MainPageComponent {
   public isModalOpen = false;
-  public giftId:number = 0
+  public giftId:number = 0;
 
-  private image = IMAGE_PATHS
+  private image = IMAGE_PATHS;
   
   //გაჩუქებული საჩუქრები
   public PresentedgiftsArr:GiftedItemModel[] = []
@@ -35,8 +35,9 @@ export class MainPageComponent {
     this.giftId = Id
   }
 
-  public closeModal(): void {
+  public closeModal(item?:any): void {
     this.isModalOpen = false;
+    this.getCurrentGifts()
   }
 
   public scrollToGift(id:string, scrollPostion:number){

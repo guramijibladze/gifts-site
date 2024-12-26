@@ -10,6 +10,8 @@ export interface GiftedItemModel {
     imageBase64:string,
     startDate:string,
     endDate:string,
+    giftDescription:string,
+    giftName:string,
     winnerFirstName:string,
     winnerLastName:string,
     donor:string,

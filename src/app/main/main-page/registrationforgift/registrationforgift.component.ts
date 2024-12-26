@@ -8,7 +8,7 @@ import { PresendetgiftsService } from '../../service/presendetgifts.service';
   styleUrl: './registrationforgift.component.scss'
 })
 export class RegistrationforgiftComponent {
-  @Output() modalClose = new EventEmitter<boolean>();
+  @Output() modalClose = new EventEmitter<number>();
   @Input() Id!:number;
 
   constructor(
@@ -25,22 +25,24 @@ export class RegistrationforgiftComponent {
   }
 
   public closeModal(){
-    this.modalClose.emit()  
+    this.modalClose.emit() 
   }
 
   public registation(){
+
     if(this.user.phoneNumber.length != 9){
       console.log('გთხოვთ შეიყვანეთ სწორი ტელეფონის ნომერი!!!')
       return
     }
+
     this.user.giftItemId = this.Id
-    console.log(this.user)
 
     this.presendetgiftsService.giftRegistration(this.user).subscribe({
-      next: (res:any) => {
-        console.log(res)
-      }
+      next: (res:any) => {},
+      // complete:(res:any) => {},
+      // error:(error:any) => {}
     })
+    
   }
 
 }
