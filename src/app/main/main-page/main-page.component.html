@@ -110,7 +110,20 @@
 
           @for(gift of currentGifts; track gift){
             <li>
+              
               <div class="service-card" style="width: 450px; height: 550px;">
+
+                <div class="participants" style="margin-top: 10px;">
+                  <span style="font-size: 12px; 
+                              display: flex; 
+                              margin-top: -15px;
+                              margin-bottom: 5px;
+                              justify-content: end; 
+                              color: #EF1F76;;">მონაწილეობას იღებს: 
+                    <b style="margin-top:  2px; font-size: 15px; margin-left: 3px; color: #05b605">{{gift.participantCount}}</b> 
+                    <span style="margin-left: 2px;">ადამიანი</span> 
+                  </span>
+                </div>
   
                 <div class="card-icon" >
                   <img [src]="'data:image/jpeg;base64,' + gift.imageBase64" style="width: 370px;" alt="">
@@ -134,16 +147,11 @@
                 </div>
          
   
-                <button class="card-btn"
-                        (click)="registrationModal(gift.id)" >
-                  <h3>დარეგისტრირდი</h3>
-                </button>
-
-                <div class="participants" style="margin-top: 10px;">
-                  <span style="font-size: 12px; display: flex; color: #EF1F76;;">მონაწილეობას იღებს: 
-                    <b style="margin-top:  2px; font-size: 15px; margin-left: 3px; color: #05b605">{{gift.participantCount}}</b> 
-                    <span style="margin-left: 2px;">ადამიანი</span> 
-                  </span>
+                <div style="display: flex; justify-content: center; margin-top: 10px;">
+                  <button class="btn"
+                          (click)="registrationModal(gift.id)" >
+                          <h3>ჩაერთე</h3>
+                  </button>
                 </div>
   
               </div>
