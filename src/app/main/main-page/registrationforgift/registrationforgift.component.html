@@ -13,13 +13,27 @@
               class="form-control" 
               name="username" 
               [(ngModel)] = "user.firstname"
-              placeholder="სახელი" required="" autofocus="" pattern="^[a-zA-Z]+$"/>
+              placeholder="სახელი"
+              autofocus="" 
+              (keyup)="updateField('firstname')"/>
+
+              <!-- Error Message -->
+              @if(textValidationName){
+                  <span>{{errorText}}</span>
+              }
+        
 
         <input type="text" 
               class="form-control" 
               name="lastName" 
               [(ngModel)] = "user.lastname"
-              placeholder="გვარი" required=""/>  
+              (keyup)="updateField('lastname')"
+              placeholder="გვარი" />  
+
+              <!-- Error Message -->
+              @if(textValidationLAstName){
+                <span>{{errorText}}</span>
+              }
 
         <input type="text" 
                 class="form-control"
@@ -29,15 +43,14 @@
                 #phoneNumber="ngModel"
                 placeholder="ტელეფონის ნომერი" 
                 minlength="2"
+                (keyup)="updateField('phoneNumber')"
                 required/>  
                
 
           <!-- Error Message -->
-          <!-- <div *ngIf="phoneNumber.errors && phoneNumber.touched">This field is required</div> -->
-
-          <div *ngIf="phoneNumber.invalid && phoneNumber.touched && phoneNumber.pristine" class="text-danger">
-            გთხოვთ, შეიყვანოთ ტელეფონის ნომერი.
-          </div>
+          @if(textValidatioPhoneNumber){
+            <span>{{phoneErrorText}}</span>
+          }
   
         <button class="btn btn-lg btn-primary btn-block" 
                 style="float: right; margin-top: 10px; margin-bottom: 20px;"

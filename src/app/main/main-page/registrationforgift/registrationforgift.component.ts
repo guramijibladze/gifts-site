@@ -11,6 +11,16 @@ export class RegistrationforgiftComponent {
   @Output() modalClose = new EventEmitter<number>();
   @Input() Id!:number;
 
+  public textValidationName:boolean = false;
+  public textValidationLAstName:boolean = false;
+  public textValidatioPhoneNumber:boolean = false;
+
+  public readonly errorText:string = 'გთხოვთ შეიყვანოთ მხოლოდ ასოები!';
+  public readonly phoneErrorText:string = 'გთხოვთ შეიყვანოთ სწორი მობილურის ნომერი!';
+
+  private readonly regex = /^[ა-ჰa-zA-Z]+$/;
+  private readonly regexForPhoneNumber = /^\d+$/;
+
   constructor(
     private presendetgiftsService: PresendetgiftsService,
   ){}
@@ -30,19 +40,60 @@ export class RegistrationforgiftComponent {
 
   public registation(){
 
-    if(this.user.phoneNumber.length != 9){
-      console.log('გთხოვთ შეიყვანეთ სწორი ტელეფონის ნომერი!!!')
+    if(!this.validationGet(this.user)){
       return
     }
-
+    
     this.user.giftItemId = this.Id
 
-    this.presendetgiftsService.giftRegistration(this.user).subscribe({
-      next: (res:any) => {},
-      // complete:(res:any) => {},
-      // error:(error:any) => {}
-    })
+    console.log(this.user)
+    // this.presendetgiftsService.giftRegistration(this.user).subscribe({
+    //   next: (res:any) => {},
+    //   // complete:(res:any) => {},
+    //   // error:(error:any) => {}
+    // })
     
+  }
+
+  public updateField(inputValueStr:string){
+
+    if(inputValueStr == 'firstname'){
+      this.textValidationName = false
+    }else if(inputValueStr == 'lastname'){
+      this.textValidationLAstName = false
+    }else{
+      this.textValidatioPhoneNumber = false
+    }
+    
+  }
+
+
+  //validation cheker
+  private validationGet(user:User):boolean{
+
+    if(!this.regex.test(user.firstname)){
+      this.textValidationName = true
+    }else{
+      this.textValidationName = false
+    }
+
+    if(!this.regex.test(user.lastname)){
+      this.textValidationLAstName = true
+    }else{
+      this.textValidationLAstName = false
+    }
+
+    if(this.user.phoneNumber.length != 9 || !this.regexForPhoneNumber.test(user.phoneNumber)){
+      this.textValidatioPhoneNumber = true
+    }else{
+      this.textValidatioPhoneNumber = false
+    }
+
+    if(this.textValidationName || this.textValidationLAstName || this.textValidatioPhoneNumber){
+      return false
+    }else{
+      return true
+    }
   }
 
 }
