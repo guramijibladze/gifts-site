@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { User } from '../../model';
 import { PresendetgiftsService } from '../../service/presendetgifts.service';
+import { GrowlService } from '../../service/growl.service';
 
 @Component({
   selector: 'app-registrationforgift',
@@ -23,6 +24,7 @@ export class RegistrationforgiftComponent {
 
   constructor(
     private presendetgiftsService: PresendetgiftsService,
+    private growlService:GrowlService
   ){}
 
   ngOnInit() { }
@@ -46,12 +48,19 @@ export class RegistrationforgiftComponent {
     
     this.user.giftItemId = this.Id
 
-    console.log(this.user)
-    // this.presendetgiftsService.giftRegistration(this.user).subscribe({
-    //   next: (res:any) => {},
-    //   // complete:(res:any) => {},
-    //   // error:(error:any) => {}
-    // })
+    // console.log(this.user)
+    this.presendetgiftsService.giftRegistration(this.user).subscribe({
+      next: (res:any) => {
+        let successMessage = 'თქვენ მონაწილეობთ გაჩუქებაში';
+        this.growlService.showSuccessAnimation(successMessage);
+        this.closeModal();
+      },
+      error:(error:any) => {
+        console.log(error)
+        let errorMesage = error.error.text;
+        this.growlService.showErrorAnimation(errorMesage);
+      }
+    })
     
   }
 

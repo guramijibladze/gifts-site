@@ -8,11 +8,13 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MainModule } from './main/main.module';
+import { GrowComponent } from './shared/grow/grow.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
+    GrowComponent,
     
   ],
   imports: [
