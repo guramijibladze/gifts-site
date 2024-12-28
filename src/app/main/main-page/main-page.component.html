@@ -106,36 +106,48 @@
 
         <h2 class="h2 section-title underline">მიმდინარე საჩუქრები</h2>
 
-        <ul class="service-list" style="display: flex; justify-content: center;">
+        <ul class="blog-list" >
 
           @for(gift of currentGifts; track gift){
-            <li>
+            <li style="display: flex; justify-content: center;">
               
-              <div class="service-card" style="width: 450px; height: 550px;">
+              <div class="service-card" style="width: 550px; height: 580px;">
 
                 <div class="participants" style="margin-top: 10px;">
                   <span style="font-size: 12px; 
                               display: flex; 
-                              margin-top: -15px;
+                              margin-top: -25px;
                               margin-bottom: 5px;
                               justify-content: end; 
-                              color: #EF1F76;;">მონაწილეობას იღებს: 
+                              color: #EF1F76;">მონაწილეობას იღებს: 
                     <b style="margin-top:  2px; font-size: 15px; margin-left: 3px; color: #05b605">{{gift.participantCount}}</b> 
                     <span style="margin-left: 2px;">ადამიანი</span> 
                   </span>
+
+                  <div style="display: flex; justify-content: end; font-size: 12px; margin-bottom: 5px;">
+                    <span style="color: #EF1F76; ">საჩუქარი გაჩუქდება:</span> 
+                    <span style="margin-left: 2px;">{{ gift.endDate | date}}</span>
+                  </div>
+                   
                 </div>
   
                 <div class="card-icon" >
-                  <img [src]="'data:image/jpeg;base64,' + gift.imageBase64" style="width: 370px;" alt="">
+                  <img [src]="'data:image/jpeg;base64,' + gift.imageBase64" style="width: 400px;" alt="">
                 </div>
   
                 <h3 class="h3 title">{{ gift.giftName }}</h3>
 
-                <p class="text" style=" margin-block-end: 0px;">
-                  {{ gift.giftDescription }}
-                </p>
+    
+                
   
                 <div class="decription" style="display: flex; justify-content: center; align-items: center;">
+
+                  <p class="text" style=" margin-block-end: 0px;">
+                    {{ gift.giftDescription }}
+                  </p>
+
+                  <span style="margin-left: 5px; margin-right: 5px; height: 35px; font-size: 35px; margin-bottom: 5px;"> | </span>
+
                   <span  style="font-weight: bold;">გამჩუქებელი: </span>
 
                   <span class="text" style="margin-left: 5px; margin-block-end: 0px;">
