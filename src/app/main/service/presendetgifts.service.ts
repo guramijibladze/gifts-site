@@ -1,8 +1,9 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { delay, finalize, Observable } from 'rxjs';
 import { GIFTREGISTRATION_URL, SWAGGER_URL } from '../../shared/utils';
 import { GiftedItemModel } from '../model';
+import { LoadingService } from './loading.service';
 
 @Injectable({
   providedIn: 'root'
@@ -13,15 +14,20 @@ export class PresendetgiftsService {
   private swaggergiftregistrationUrl = GIFTREGISTRATION_URL
 
   constructor(
-    private http: HttpClient
+    private http: HttpClient,
+    private loadingService:LoadingService
   ) { }
 
-  // public getcomputerRooms():Observable<any>{
-  //   return this.http.get<any>('http://46.49.6.118:2040/api/Gifts/GetGiftedItems?Raodenoba=1')
-  // }
 
   public giftRegistration(sendObject:any):Observable<GiftedItemModel[]>{
+    
+    this.loadingService.loaderStart()
+    
     return this.http.post<any>(`${this.swaggergiftregistrationUrl}`, sendObject)
+            .pipe(
+              delay(2500),
+              finalize(() => this.loadingService.loaderStop())
+            )
   }
 
   public getGiftedItems(sendObject:any):Observable<GiftedItemModel[]>{
