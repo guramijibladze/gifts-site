@@ -2,7 +2,8 @@ export interface User {
     giftItemId:number,
     firstname:string,
     lastname:string,
-    phoneNumber:string
+    phoneNumber:string,
+    smsCode:string
 }
 
 export interface GiftedItemModel {

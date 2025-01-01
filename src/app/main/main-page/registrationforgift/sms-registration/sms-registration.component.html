@@ -1,0 +1,30 @@
+
+<div class="modal">
+    <div class="modal-content">
+
+        <p style="float: right; 
+                cursor: pointer; 
+                margin-bottom: 25px;
+                width: 20px; 
+                padding: 10px 25px;"
+            class="btn btn-lg btn-primary btn-block" 
+            (click)="closeModal()">X</p>
+
+        <form class="form-signin" >  
+
+            <input type="text" 
+                class="form-control" 
+                name="smsCode" 
+                [(ngModel)] = "smsCode"
+                placeholder="სმს კოდი"
+                (keyup)="keyupSmsCode()"
+                autofocus=""/>   
+                
+            <div class="progress">
+                <div class="color"></div>
+            </div>
+
+        </form>
+      
+    </div>
+</div>

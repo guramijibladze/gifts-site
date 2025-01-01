@@ -9,16 +9,17 @@ import { provideAnimationsAsync } from '@angular/platform-browser/animations/asy
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MainModule } from './main/main.module';
 import { GrowComponent } from './shared/grow/grow.component';
+import { LoadingComponent } from './shared/loading/loading.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     GrowComponent,
-    
   ],
   imports: [
     BrowserModule,
+    LoadingComponent,
     AppRoutingModule,
     ShellModule,
     HttpClientModule,

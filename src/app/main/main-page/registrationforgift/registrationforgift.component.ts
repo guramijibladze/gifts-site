@@ -12,15 +12,22 @@ export class RegistrationforgiftComponent {
   @Output() modalClose = new EventEmitter<number>();
   @Input() Id!:number;
 
+  //validation 
   public textValidationName:boolean = false;
   public textValidationLAstName:boolean = false;
   public textValidatioPhoneNumber:boolean = false;
 
+  //error text
   public readonly errorText:string = 'გთხოვთ შეიყვანოთ მხოლოდ ასოები!';
   public readonly phoneErrorText:string = 'გთხოვთ შეიყვანოთ სწორი მობილურის ნომერი!';
 
+  //sms validation modal
+  public smsValidationModal:boolean = false
+
   private readonly regex = /^[ა-ჰa-zA-Z]+$/;
   private readonly regexForPhoneNumber = /^\d+$/;
+
+  private smsCode!:string
 
   constructor(
     private presendetgiftsService: PresendetgiftsService,
@@ -33,11 +40,23 @@ export class RegistrationforgiftComponent {
     giftItemId: 0,
     firstname: '',
     lastname: '',
-    phoneNumber: ''
+    phoneNumber: '',
+    smsCode: ''
+  }
+
+  public openModal(){
+    this.smsValidationModal = true;
+  
   }
 
   public closeModal(){
     this.modalClose.emit() 
+  }
+
+  public smsModalClose(smsCode:string){
+    this.smsValidationModal = false;
+    smsCode ? this.smsCode = smsCode : '';
+    smsCode ? this.registation() : '';
   }
 
   public registation(){
@@ -46,11 +65,13 @@ export class RegistrationforgiftComponent {
       return
     }
     
-    this.user.giftItemId = this.Id
+    this.user.giftItemId = this.Id;
+    this.user.smsCode = this.smsCode;
 
     // console.log(this.user)
     this.presendetgiftsService.giftRegistration(this.user).subscribe({
       next: (res:any) => {
+        this.smsValidationModal = true
         let successMessage = 'თქვენ მონაწილეობთ გაჩუქებაში';
         this.growlService.showSuccessAnimation(successMessage);
         this.closeModal();

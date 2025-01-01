@@ -7,6 +7,7 @@ import { PresendetgiftsService } from './service/presendetgifts.service';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { RegistrationforgiftComponent } from './main-page/registrationforgift/registrationforgift.component';
 import { FormsModule } from '@angular/forms';
+import { SmsRegistrationComponent } from './main-page/registrationforgift/sms-registration/sms-registration.component';
 
 const routes: Routes = [
   { path: '', component: MainPageComponent}
@@ -15,7 +16,8 @@ const routes: Routes = [
 @NgModule({
   declarations: [
     MainPageComponent,
-    RegistrationforgiftComponent
+    RegistrationforgiftComponent,
+    SmsRegistrationComponent
   ],
   imports: [
     CommonModule,
