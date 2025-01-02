@@ -191,37 +191,33 @@
             <li>
               <div class="blog-card">
   
-                <figure class="banner">
-                  <a>
+                <figure class="banner" style="display: flex; justify-content: center;">
+                  
                     <img [src]="'data:image/jpeg;base64,' + gift.imageBase64" width="250" height="250" loading="lazy"
                       alt="Vestibulum massa arcu, consectetu pellentesque scelerisque." 
                       class="">
-                  </a>
+                
                 </figure>
   
                 <div class="content">
   
                   <h3 class="h3 title">
-                    <a href="#">
-                      მაგიდის საათი
+                    <a>
+                      {{ gift.giftName }}
                     </a>
                   </h3>
   
-                  <p class="text">
+                  <!-- <p class="text">
                     მაგიდის საათი, გადაეცა ჩვენს ფეისბუკ გამომწერს
                   </p>
   
                   <div class="meta">
   
                     <div class="publish-date">
-                      <!-- <ion-icon name="time-outline"></ion-icon> -->
-  
                       <time datetime="2022-03-07"> გამოქვეყნება:{{ gift.startDate | date}}</time>
                     </div>
   
-                    <div class="publish-date">
-                      <!-- <ion-icon name="chatbubble-outline"></ion-icon> -->
-  
+                    <div class="publish-date">  
                       <time datetime="2022-03-07"> გაჩუქება:{{ gift.endDate | date }}</time>
                     </div>
   
@@ -229,7 +225,7 @@
                     {{ gift.winnerFirstName }}{{ gift.winnerLastName }}
                    </div>
   
-                  </div>
+                  </div> -->
   
                 </div>
   
