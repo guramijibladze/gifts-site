@@ -9,7 +9,7 @@ import { GrowlService } from '../../service/growl.service';
   styleUrl: './registrationforgift.component.scss'
 })
 export class RegistrationforgiftComponent {
-  @Output() modalClose = new EventEmitter<number>();
+  @Output() modalClose = new EventEmitter<string>();
   @Input() Id!:number;
 
   //validation 
@@ -52,8 +52,8 @@ export class RegistrationforgiftComponent {
     this.smsValidationModal = true;
   }
 
-  public closeModal():void{
-    this.modalClose.emit() 
+  public closeModal(status?:string):void{
+    this.modalClose.emit(status) 
   }
 
   public smsModalClose(smsCode:string):void{
@@ -111,8 +111,9 @@ export class RegistrationforgiftComponent {
     this.presendetgiftsService.giftRegistration(this.user).subscribe({
       next: (res:any) => {
         let successMessage = 'თქვენ მონაწილეობთ გაჩუქებაში';
+        let status = '200'
         this.growlService.showSuccessAnimation(successMessage);
-        this.closeModal();
+        this.closeModal(status);
       },
       error:(error:any) => {
 

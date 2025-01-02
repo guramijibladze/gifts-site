@@ -35,9 +35,13 @@ export class MainPageComponent {
     this.giftId = Id
   }
 
-  public closeModal(item?:any): void {
+  public closeModal(event?:any): void {
     this.registrationModal = false;
-    this.getCurrentGifts()
+    
+    if(event == '200'){
+      this.getCurrentGifts()
+    }
+
   }
 
   public scrollToGift(id:string, scrollPostion:number){

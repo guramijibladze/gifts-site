@@ -31,6 +31,13 @@ export class PresendetgiftsService {
   }
 
   public getGiftedItems(sendObject:any):Observable<GiftedItemModel[]>{
+
+    this.loadingService.loaderStart()
+
     return this.http.get<any>(`${this.swaggerUrl}GetGiftedItems?Raodenoba=${sendObject.Raodenoba}&isActive=${sendObject.isActive}`)
+            .pipe(
+              delay(1500),
+              finalize(() => this.loadingService.loaderStop())
+            )
   }
 }
