@@ -161,7 +161,7 @@
   
                 <div style="display: flex; justify-content: center; margin-top: 10px;">
                   <button class="btn"
-                          (click)="registrationModal(gift.id)" >
+                          (click)="openRegistrationModal(gift.id)" >
                           <h3>ჩაერთე</h3>
                   </button>
                 </div>
@@ -248,6 +248,6 @@
 
 
 <!-- მოდალის კონტეინერი -->
- @if(isModalOpen){
+ @if(registrationModal){
   <app-registrationforgift [Id]="giftId" (modalClose)="closeModal($event)"></app-registrationforgift>
 }

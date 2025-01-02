@@ -9,7 +9,7 @@ import { GiftedItemModel } from '../model';
   styleUrl: './main-page.component.scss'
 })
 export class MainPageComponent {
-  public isModalOpen = false;
+  public registrationModal = false;
   public giftId:number = 0;
 
   private image = IMAGE_PATHS;
@@ -30,13 +30,13 @@ export class MainPageComponent {
   }
 
 
-  public registrationModal(Id:number): void {
-    this.isModalOpen = true;
+  public openRegistrationModal(Id:number): void {
+    this.registrationModal = true;
     this.giftId = Id
   }
 
   public closeModal(item?:any): void {
-    this.isModalOpen = false;
+    this.registrationModal = false;
     this.getCurrentGifts()
   }
 

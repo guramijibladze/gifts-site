@@ -44,45 +44,22 @@ export class RegistrationforgiftComponent {
     smsCode: ''
   }
 
-  public openModal(){
-    this.smsValidationModal = true;
-  
-  }
-
-  public closeModal(){
-    this.modalClose.emit() 
-  }
-
-  public smsModalClose(smsCode:string){
-    this.smsValidationModal = false;
-    smsCode ? this.smsCode = smsCode : '';
-    smsCode ? this.registation() : '';
-  }
-
-  public registation(){
-
+  public openModal():void{
     if(!this.validationGet(this.user)){
       return
     }
-    
-    this.user.giftItemId = this.Id;
-    this.user.smsCode = this.smsCode;
 
-    // console.log(this.user)
-    this.presendetgiftsService.giftRegistration(this.user).subscribe({
-      next: (res:any) => {
-        this.smsValidationModal = true
-        let successMessage = 'თქვენ მონაწილეობთ გაჩუქებაში';
-        this.growlService.showSuccessAnimation(successMessage);
-        this.closeModal();
-      },
-      error:(error:any) => {
-        console.log(error)
-        let errorMesage = error.error.text;
-        this.growlService.showErrorAnimation(errorMesage);
-      }
-    })
-    
+    this.smsValidationModal = true;
+  }
+
+  public closeModal():void{
+    this.modalClose.emit() 
+  }
+
+  public smsModalClose(smsCode:string):void{
+    this.smsValidationModal = false;
+    smsCode ? this.smsCode = smsCode : '';
+    smsCode ? this.registationFinish() : '';
   }
 
   public updateField(inputValueStr:string){
@@ -124,6 +101,26 @@ export class RegistrationforgiftComponent {
     }else{
       return true
     }
+  }
+
+  private registationFinish():void{
+    
+    this.user.giftItemId = this.Id;
+    this.user.smsCode = this.smsCode;
+
+    this.presendetgiftsService.giftRegistration(this.user).subscribe({
+      next: (res:any) => {
+        let successMessage = 'თქვენ მონაწილეობთ გაჩუქებაში';
+        this.growlService.showSuccessAnimation(successMessage);
+        this.closeModal();
+      },
+      error:(error:any) => {
+
+        let errorMesage = error.error.text;
+        this.growlService.showErrorAnimation(errorMesage);
+      }
+    })
+    
   }
 
 }
