@@ -111,20 +111,19 @@
           @for(gift of currentGifts; track gift){
             <li style="display: flex; justify-content: center;">
               
-              <div class="service-card" style="width: 550px; height: 580px;">
+              <div class="blog-card" >
 
-                <div class="participants" style="margin-top: 10px;">
+                <div class="participants" style="float: right;">
                   <span style="font-size: 12px; 
-                              display: flex; 
+                              display: flex;
                               margin-top: -25px;
                               margin-bottom: 5px;
-                              justify-content: end; 
                               color: #EF1F76;">მონაწილეობას იღებს: 
                     <b style="margin-top:  2px; font-size: 15px; margin-left: 3px; color: #05b605">{{gift.participantCount}}</b> 
                     <span style="margin-left: 2px;">ადამიანი</span> 
                   </span>
 
-                  <div style="display: flex; justify-content: end; font-size: 12px; margin-bottom: 5px;">
+                  <div style=" font-size: 12px; margin-bottom: 5px; display: flex;">
                     <span style="color: #EF1F76; ">საჩუქარი გაჩუქდება:</span> 
                     <span style="margin-left: 2px;">{{ gift.endDate | date}}</span>
                   </div>
@@ -132,21 +131,22 @@
                 </div>
   
                 <div class="card-icon" >
-                  <img [src]="'data:image/jpeg;base64,' + gift.imageBase64" style="width: 400px;" alt="">
+                  <img [src]="'data:image/jpeg;base64,' + gift.imageBase64" style="width: 300px;" alt="">
                 </div>
   
-                <h3 class="h3 title">{{ gift.giftName }}</h3>
-
-    
+                <h3 class="h3 title" style="text-align: center;">{{ gift.giftName }}</h3>
                 
   
-                <div class="decription" style="display: flex; justify-content: center; align-items: center;">
+                <div class="decription" style="display: flex; 
+                                                justify-content: center; 
+                                                max-width: 400px;
+                                                align-items: center;">
 
-                  <p class="text" style=" margin-block-end: 0px;">
+                  <!-- <p class="text" style=" margin-block-end: 0px;">
                     {{ gift.giftDescription }}
-                  </p>
+                  </p> -->
 
-                  <span style="margin-left: 5px; margin-right: 5px; height: 35px; font-size: 35px; margin-bottom: 5px;"> | </span>
+                  <!-- <span style="margin-left: 5px; margin-right: 5px; height: 35px; font-size: 35px; margin-bottom: 5px;"> | </span> -->
 
                   <span  style="font-weight: bold;">გამჩუქებელი: </span>
 
@@ -192,10 +192,10 @@
               <div class="blog-card">
   
                 <figure class="banner">
-                  <a href="#">
-                    <img [src]="'data:image/jpeg;base64,' + gift.imageBase64" width="750" height="350" loading="lazy"
+                  <a>
+                    <img [src]="'data:image/jpeg;base64,' + gift.imageBase64" width="250" height="250" loading="lazy"
                       alt="Vestibulum massa arcu, consectetu pellentesque scelerisque." 
-                      class="img-cover">
+                      class="">
                   </a>
                 </figure>
   

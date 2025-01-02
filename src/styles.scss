@@ -810,7 +810,7 @@
      */
   
     .blog-card {
-      display: grid;
+      // display: grid;
       grid-template-columns: 0.75fr 1fr;
       gap: 20px;
       padding: 30px;
@@ -1063,7 +1063,7 @@
      * BLOG
      */
   
-    .blog-list { grid-template-columns: 1fr 1fr; }
+    .blog-list { grid-template-columns: 1fr 1fr 1fr; }
   
     .blog-card { height: 100%; }
   
