@@ -193,7 +193,7 @@
   
                 <figure class="banner" style="display: flex; justify-content: center;">
                   
-                    <img [src]="'data:image/jpeg;base64,' + gift.imageBase64" width="250" height="250" loading="lazy"
+                    <img [src]="'data:image/jpeg;base64,' + gift.imageBase64" width="300" height="300" loading="lazy"
                       alt="Vestibulum massa arcu, consectetu pellentesque scelerisque." 
                       class="">
                 
@@ -202,30 +202,32 @@
                 <div class="content">
   
                   <h3 class="h3 title">
-                    <a>
+                    <a style="text-align: center;">
                       {{ gift.giftName }}
                     </a>
                   </h3>
   
                   <!-- <p class="text">
                     მაგიდის საათი, გადაეცა ჩვენს ფეისბუკ გამომწერს
-                  </p>
+                  </p> -->
   
-                  <div class="meta">
-  
+                  <div class="description">
+<!--   
                     <div class="publish-date">
                       <time datetime="2022-03-07"> გამოქვეყნება:{{ gift.startDate | date}}</time>
+                    </div> -->
+
+                    <div style="display: flex;">
+                      <span>საჩუქარი გადეცა:</span>
+                      <span style="margin-left: 2px;">{{ gift.winnerFirstName }}</span>
+                      <span style="margin-left: 2px;">{{ gift.winnerLastName }}ს</span>
                     </div>
   
                     <div class="publish-date">  
-                      <time datetime="2022-03-07"> გაჩუქება:{{ gift.endDate | date }}</time>
+                      <time datetime="2022-03-07"> გაჩუქდა:{{ gift.endDate | date }}</time>
                     </div>
   
-                   <div>
-                    {{ gift.winnerFirstName }}{{ gift.winnerLastName }}
-                   </div>
-  
-                  </div> -->
+                  </div>
   
                 </div>
   
