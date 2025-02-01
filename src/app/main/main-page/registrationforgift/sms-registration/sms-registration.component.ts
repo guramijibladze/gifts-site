@@ -27,7 +27,7 @@ export class SmsRegistrationComponent {
   }
 
   private startTimer(){
-    let timer = 300;
+    let timer = 60;
 
     this.smsTimer = setInterval(() => {
 
