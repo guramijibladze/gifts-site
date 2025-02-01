@@ -31,6 +31,14 @@
     color: var(--white);
     background-color: var(--winter-sky);
   }
+
+  .participants{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    // position: absolute;
+    margin-top: 20px;
+  }
   
 
 .open-modal-button:hover {

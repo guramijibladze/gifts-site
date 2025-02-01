@@ -109,11 +109,11 @@
         <ul class="blog-list" >
 
           @for(gift of currentGifts; track gift){
-            <li style="display: flex; justify-content: center;">
+            <li style="display: flex; justify-content: center; width: 36opx; height: 490px;">
               
               <div class="blog-card" >
 
-                <div class="participants" style="float: right;">
+                <!-- <div class="participants" style="float: right;">
                   <span style="font-size: 12px; 
                               display: flex;
                               margin-top: -25px;
@@ -128,7 +128,7 @@
                     <span style="margin-left: 2px;">{{ gift.endDate | date}}</span>
                   </div>
                    
-                </div>
+                </div> -->
   
                 <div class="card-icon" >
                   <img [src]="'data:image/jpeg;base64,' + gift.imageBase64" style="width: 300px;" alt="">
@@ -165,6 +165,22 @@
                           <h3>ჩაერთე</h3>
                   </button>
                 </div>
+
+                <div class="participants">
+
+                    <div style=" display: flex;">
+                      <span >
+                        <img style="width: 35px; height: 35px;" src="../../../assets/image/IMG_0796.jpg" alt="">
+                      </span> 
+                      <span style="margin-left: 2px; margin: auto;">{{ gift.endDate | date}}</span>
+                    </div>
+
+                    <div class="partocopant-qount" style="display: flex;">
+                      <img style="width: 35px; height: 35px;" src="../../../assets/image/IMG_0795.jpg" alt="">
+                      <span style="margin-left: 2px; margin: auto;">{{gift.participantCount}}</span>
+                    </div>
+                    
+                </div>
   
               </div>
             </li>
@@ -180,7 +196,7 @@
       - #BLOG
     -->
 
-    <section class="section blog" id="blog">
+    <section class="section service" id="currentGifts">
       <div class="container">
 
         <h2 class="h2 section-title underline">გაჩუქებული საჩუქრები</h2>
@@ -188,7 +204,7 @@
         <ul class="blog-list">
 
           @for(gift of PresentedgiftsArr; track PresentedgiftsArr){
-            <li>
+            <li style="display: flex; justify-content: center; width: 36opx; height: 490px;">
               <div class="blog-card">
   
                 <figure class="banner" style="display: flex; justify-content: center;">
