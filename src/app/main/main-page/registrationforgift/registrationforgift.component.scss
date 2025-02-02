@@ -96,3 +96,29 @@ body {
 	}
 
 }
+
+
+.progress{
+  position: relative;
+  height: 28px;
+  margin-top: 15px;
+  // width: 1110%;
+  border: 10px solid #f4a261;
+  border-radius: 15px;
+}
+.progress .color{
+  margin-left: -0.5px;
+  position: absolute;
+  background-color: #8c8c8c;
+  width: 0px;
+  height: 9px;
+  border-radius: 15px;
+  animation: progres 60s infinite linear;    
+}
+@keyframes progres{
+
+  100%{
+      width: 100%;
+  }
+  
+};

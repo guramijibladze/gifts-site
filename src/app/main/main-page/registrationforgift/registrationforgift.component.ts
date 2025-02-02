@@ -12,10 +12,15 @@ export class RegistrationforgiftComponent {
   @Output() modalClose = new EventEmitter<string>();
   @Input() Id!:number;
 
+  //timer
+  smsTimer!:ReturnType<typeof setInterval>
+
   //validation 
   public textValidationName:boolean = false;
   public textValidationLAstName:boolean = false;
   public textValidatioPhoneNumber:boolean = false;
+
+  public smsInputValue:boolean = false;
 
   //error text
   public readonly errorText:string = 'გთხოვთ შეიყვანოთ მხოლოდ ასოები!';
@@ -44,12 +49,13 @@ export class RegistrationforgiftComponent {
     smsCode: ''
   }
 
-  public openModal():void{
+  public registrationStart():void{
     if(!this.validationGet(this.user)){
       return
     }
 
-    this.smsValidationModal = true;
+    this.smsInputValue = true;
+    this.startTimer()
   }
 
   public closeModal(status?:string):void{
@@ -57,7 +63,7 @@ export class RegistrationforgiftComponent {
   }
 
   public smsModalClose(smsCode:string):void{
-    this.smsValidationModal = false;
+    // this.smsValidationModal = false;
     smsCode ? this.smsCode = smsCode : '';
     smsCode ? this.registationFinish() : '';
   }
@@ -72,6 +78,14 @@ export class RegistrationforgiftComponent {
       this.textValidatioPhoneNumber = false
     }
     
+  }
+
+  public checkSmsCode():void{
+    let smsCodeStatus = true
+
+    if(smsCodeStatus && this.user.smsCode.length == 4){
+      this.registationFinish()
+    }
   }
 
 
@@ -107,6 +121,7 @@ export class RegistrationforgiftComponent {
     
     this.user.giftItemId = this.Id;
     this.user.smsCode = this.smsCode;
+    this.smsInputValue = false;
 
     this.presendetgiftsService.giftRegistration(this.user).subscribe({
       next: (res:any) => {
@@ -116,12 +131,31 @@ export class RegistrationforgiftComponent {
         this.closeModal(status);
       },
       error:(error:any) => {
-
         let errorMesage = error.error.text;
         this.growlService.showErrorAnimation(errorMesage);
+        clearInterval(this.smsTimer)
       }
     })
     
+  }
+
+  private startTimer(){
+    let timer = 59;
+
+    this.smsTimer = setInterval(() => {
+      console.log(timer)
+
+      if(timer == 0){
+        clearInterval(this.smsTimer)
+        this.smsInputValue = false;
+        let error = 'დრო ამოიწურა, საცადე ახალი სმს კოდი!!!';
+        this.growlService.showErrorAnimation(error);
+      }
+
+      timer--
+
+    }, 1000);
+
   }
 
 }

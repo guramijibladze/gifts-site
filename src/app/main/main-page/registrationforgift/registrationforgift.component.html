@@ -6,7 +6,7 @@
       (click)="closeModal()">X</p>
 
     <div class="wrapper">
-      <form class="form-signin" (ngSubmit)="openModal()" #userForm="ngForm">       
+      <form class="form-signin" (ngSubmit)="registrationStart()" #userForm="ngForm">       
         <h2 class="form-signin-heading"></h2>
         
         <input type="text" 
@@ -45,6 +45,24 @@
                 minlength="2"
                 (keyup)="updateField('phoneNumber')"
                 required/>  
+
+        @if(smsInputValue){
+          <input type="text" 
+                  class="form-control"
+                  id="smsCode"
+                  name="smsCode" 
+                  [(ngModel)] = "user.smsCode"
+                  #phoneNumber="ngModel"
+                  placeholder="სმს კოდი" 
+                  minlength="4"
+                  (keyup)="checkSmsCode()"
+                  />  
+
+            <div class="progress">
+                <div class="color"></div>
+            </div>
+          }
+
                
 
           <!-- Error Message -->
@@ -65,6 +83,6 @@
 
 
 <!-- სმს მოდალის კონტეინერი -->
-@if(smsValidationModal){
+<!-- @if(smsValidationModal){
   <app-sms-registration (modalClose)="smsModalClose($event)"></app-sms-registration>
-}
+} -->
