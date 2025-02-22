@@ -6,16 +6,16 @@
       (click)="closeModal()">X</p>
 
     <div class="wrapper">
-      <form class="form-signin" (ngSubmit)="registrationStart()" #userForm="ngForm">       
-        <h2 class="form-signin-heading"></h2>
+      <form class="form-signin" (ngSubmit)="getSmsCode()" #userForm="ngForm">       
+              <h2 class="form-signin-heading"></h2>
         
-        <input type="text" 
-              class="form-control" 
-              name="username" 
-              [(ngModel)] = "user.firstname"
-              placeholder="სახელი"
-              autofocus="" 
-              (keyup)="updateField('firstname')"/>
+              <input type="text" 
+                    class="form-control" 
+                    name="username" 
+                    [(ngModel)] = "user.firstname"
+                    placeholder="სახელი"
+                    autofocus="" 
+                    (keyup)="updateField('firstname')"/>
 
               <!-- Error Message -->
               @if(textValidationName){
@@ -23,28 +23,41 @@
               }
         
 
-        <input type="text" 
-              class="form-control" 
-              name="lastName" 
-              [(ngModel)] = "user.lastname"
-              (keyup)="updateField('lastname')"
-              placeholder="გვარი" />  
+              <input type="text" 
+                    class="form-control" 
+                    name="lastName" 
+                    [(ngModel)] = "user.lastname"
+                    (keyup)="updateField('lastname')"
+                    placeholder="გვარი" />  
 
               <!-- Error Message -->
               @if(textValidationLAstName){
                 <span>{{errorText}}</span>
               }
 
-        <input type="text" 
-                class="form-control"
-                id="username"
-                name="phoneNumber" 
-                [(ngModel)] = "user.phoneNumber"
-                #phoneNumber="ngModel"
-                placeholder="მობილურის ნომერი" 
-                minlength="2"
-                (keyup)="updateField('phoneNumber')"
-                required/>  
+              <div class="telefon-numbers" style=" display: grid; border-radius: 6px;
+                                                  height: 50px;
+                                                  margin-top: 3px;
+                                                  border: 3px solid #ebebeb;
+                                                  grid-template-columns:  1.5fr 6fr 1.5fr;">
+
+                <input class="tel-index"  placeholder="+995" disabled style="width: 100%; margin-top: 5px; text-align: center;">
+
+                <input type="text" 
+                      style="width: 100%; margin-top: -0.5px; font-size: 16px; height: auto; padding: 10px; margin-left: 3px; border: 2px solid #faf1f1;"
+                      class="tel-number"
+                      id="username"
+                      name="phoneNumber" 
+                      [(ngModel)] = "user.phoneNumber"
+                      #phoneNumber="ngModel"
+                      placeholder="მობილურის ნომერი" 
+                      minlength="2"
+                      (keyup)="updateField('phoneNumber')"
+                      required/>  
+
+                <button type="submit">სმს</button>
+              </div>
+
 
         @if(smsInputValue){
           <input type="text" 
@@ -63,17 +76,14 @@
             </div>
           }
 
-               
+          <span>{{registationErrorText}}</span>
 
           <!-- Error Message -->
           @if(textValidatioPhoneNumber){
             <span>{{phoneErrorText}}</span>
           }
   
-        <button class="btn btn-lg btn-primary btn-block" 
-                style="float: right; margin-top: 10px; margin-bottom: 20px;"
-       
-                type="submit">დარეგისტრირდი</button>   
+
       </form>
     </div>
 

@@ -25,6 +25,7 @@ export class RegistrationforgiftComponent {
   //error text
   public readonly errorText:string = 'გთხოვთ შეიყვანოთ მხოლოდ ასოები!';
   public readonly phoneErrorText:string = 'გთხოვთ შეიყვანოთ სწორი მობილურის ნომერი!';
+  public registationErrorText:string = '';
 
   //sms validation modal
   public smsValidationModal:boolean = false
@@ -49,24 +50,10 @@ export class RegistrationforgiftComponent {
     smsCode: ''
   }
 
-  public registrationStart():void{
-    if(!this.validationGet(this.user)){
-      return
-    }
-
-    this.smsInputValue = true;
-    this.startTimer()
-  }
-
   public closeModal(status?:string):void{
     this.modalClose.emit(status) 
   }
 
-  public smsModalClose(smsCode:string):void{
-    // this.smsValidationModal = false;
-    smsCode ? this.smsCode = smsCode : '';
-    smsCode ? this.registationFinish() : '';
-  }
 
   public updateField(inputValueStr:string){
 
@@ -81,11 +68,18 @@ export class RegistrationforgiftComponent {
   }
 
   public checkSmsCode():void{
-    let smsCodeStatus = true
 
-    if(smsCodeStatus && this.user.smsCode.length == 4){
+    if( this.user.smsCode.length == 4){
       this.registationFinish()
     }
+  }
+
+  getSmsCode(){
+    if(!this.validationGet(this.user)){
+      return
+    }
+    this.smsInputValue = true;
+    this.registationErrorText = '';
   }
 
 
@@ -132,7 +126,8 @@ export class RegistrationforgiftComponent {
       },
       error:(error:any) => {
         let errorMesage = error.error.text;
-        this.growlService.showErrorAnimation(errorMesage);
+        this.registationErrorText = errorMesage;
+        // this.growlService.showErrorAnimation(errorMesage);
         clearInterval(this.smsTimer)
       }
     })
